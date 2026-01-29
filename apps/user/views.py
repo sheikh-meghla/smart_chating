@@ -12,7 +12,6 @@ from .serializers import (
     SignOutSerializer,
     ChangePasswordSerializer,
 
-    UserInfoSerializer,
 )
 
 
@@ -82,19 +81,3 @@ class ChangePasswordAPIView(APIView):
             })
         raise ValidationError(serializer.errors)
 
-class MyProfileAPIView(APIView):
-    permission_classes = [IsAuthenticated]
-    authentication_classes = [JWTAuthentication]
-
-    def get(self, request):
-        vendor = request.user
-
-        user_info = CustomUser.objects.prefetch_related('vendor_profile').get(id=vendor.id)
-        serializer = UserInfoSerializer(user_info)
-        
-
-        return Response({
-            "status" : "success",
-            "message" : "Profile retrieved successfully.",
-            "data" : serializer.data
-        })

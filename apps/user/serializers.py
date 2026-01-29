@@ -102,8 +102,4 @@ class ChangePasswordSerializer(serializers.Serializer):
         user.save()
         return user
 
-class CustomUserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CustomUser
-        fields = ['id','email','role']
 
