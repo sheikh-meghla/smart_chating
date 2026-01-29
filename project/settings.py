@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'apps.user',
+    'apps.chating',
     'rest_framework',
 ]
 
